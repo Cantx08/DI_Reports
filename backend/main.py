@@ -17,6 +17,8 @@ app.add_middleware(
 )
 
 # Agregar routers
+
+
 @app.get("/health")
 async def health_check():
     """Endpoint de salud."""
