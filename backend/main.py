@@ -1,10 +1,28 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from starlette.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
+
+from src.infrastructure.db import engine
+from src.infrastructure.models.base import Base
+from src.infrastructure.api.controllers import department_controller
+# Importar todos los modelos para que se registren
+from src.infrastructure.models import department
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    Base.metadata.create_all(bind=engine)
+    yield
+    # Shutdown
+    pass
+
 
 app = FastAPI(
     title="Sistema de Publicaciones y Certificaciones de Scopus",
     description="API para consulta de publicaciones académicas de Scopus y generación de reportes.",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Configurar CORS
@@ -17,6 +35,7 @@ app.add_middleware(
 )
 
 # Agregar routers
+app.include_router(department_controller.router)
 
 
 @app.get("/health")
