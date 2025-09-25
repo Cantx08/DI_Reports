@@ -4,9 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.infrastructure.db import engine
 from src.infrastructure.models.base import Base
-from src.infrastructure.api.controllers import department_controller
+from src.infrastructure.api.controllers import department_controller, author_controller, scopus_account_controller
 # Importar todos los modelos para que se registren
-from src.infrastructure.models import department
+from src.infrastructure.models import department, author, scopus_account
 
 
 @asynccontextmanager
@@ -36,6 +36,8 @@ app.add_middleware(
 
 # Agregar routers
 app.include_router(department_controller.router)
+app.include_router(author_controller.router)
+app.include_router(scopus_account_controller.router)
 
 
 @app.get("/health")

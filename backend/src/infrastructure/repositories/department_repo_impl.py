@@ -1,5 +1,5 @@
+""" Implementación del repositorio para la entidad Departamento. """
 from typing import List
-
 from sqlalchemy.orm import Session
 from ...domain.entities.department import Department
 from ...domain.repositories.department_repository import IDepartmentRepository
@@ -7,6 +7,8 @@ from ..models.department import DepartmentModel
 
 
 class DepartmentRepoImpl(IDepartmentRepository):
+    """Implementación del repositorio de departamentos."""
+
     def __init__(self, session: Session):
         self.session = session
 

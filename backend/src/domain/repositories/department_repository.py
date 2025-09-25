@@ -1,3 +1,4 @@
+""" Interfaz del repositorio para la entidad de Departamento. """
 from abc import ABC, abstractmethod
 from typing import List
 
@@ -14,7 +15,7 @@ class IDepartmentRepository(ABC):
 
     @abstractmethod
     def get_all(self) -> List[Department]:
-        """Obtener todos los departamentos."""
+        """ Obtener todos los departamentos. """
         pass
 
     @abstractmethod

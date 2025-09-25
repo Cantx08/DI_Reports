@@ -1,7 +1,7 @@
-""" DTOS para departamento. """
+""" DTOS para Departamento. """
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class DepartmentCreateDTO(BaseModel):

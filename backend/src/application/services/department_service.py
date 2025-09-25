@@ -1,10 +1,11 @@
+""" Servicio para la gestión de departamentos. """
 from ...application.dto.department_dto import DepartmentCreateDTO, DepartmentResponseDTO, DepartmentUpdateDTO
 from ...domain.entities.department import Department
 from ...domain.repositories.department_repository import IDepartmentRepository
 
 
 class DepartmentService:
-    """Servicio para la gestión de departamentos."""
+    """ Servicio para la gestión de departamentos. """
 
     def __init__(self, repository: IDepartmentRepository):
         self.repository = repository
